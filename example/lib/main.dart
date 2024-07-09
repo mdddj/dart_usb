@@ -1,9 +1,12 @@
+import 'dart:convert';
+
+import 'package:dart_usb/api/usb.dart';
+import 'package:dart_usb/dart_usb.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:dart_usb/dart_usb.dart' as dart_usb;
-
 void main() {
+  initUsbLibrary();
   runApp(const MyApp());
 }
 
@@ -17,58 +20,35 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   late int sumResult;
   late Future<int> sumAsyncResult;
+  List<UsbInfo> usbs = [];
 
   @override
   void initState() {
     super.initState();
-    sumResult = dart_usb.sum(1, 2);
-    sumAsyncResult = dart_usb.sumAsync(3, 4);
   }
 
   @override
   Widget build(BuildContext context) {
-    const textStyle = TextStyle(fontSize: 25);
-    const spacerSmall = SizedBox(height: 10);
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Native Packages'),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                const Text(
-                  'This calls a native function through FFI that is shipped as source in the package. '
-                  'The native code is built as part of the Flutter Runner build.',
-                  style: textStyle,
-                  textAlign: TextAlign.center,
-                ),
-                spacerSmall,
-                Text(
-                  'sum(1, 2) = $sumResult',
-                  style: textStyle,
-                  textAlign: TextAlign.center,
-                ),
-                spacerSmall,
-                FutureBuilder<int>(
-                  future: sumAsyncResult,
-                  builder: (BuildContext context, AsyncSnapshot<int> value) {
-                    final displayValue =
-                        (value.hasData) ? value.data : 'loading';
-                    return Text(
-                      'await sumAsync(3, 4) = $displayValue',
-                      style: textStyle,
-                      textAlign: TextAlign.center,
-                    );
-                  },
-                ),
-              ],
-            ),
+          appBar: AppBar(
+            title: const Text('Native Packages'),
           ),
-        ),
-      ),
+          body: ListView(
+            children: [
+              TextButton(
+                  onPressed: () async {
+                    usbs = await getUsbInfos();
+                    setState(() {});
+                    for (var element in usbs) {
+                      print(element.vendorId);
+                      print(element.productId);
+                    }
+                  },
+                  child: Text("Get")),
+              Text('${jsonEncode(usbs)}')
+            ],
+          )),
     );
   }
 }
