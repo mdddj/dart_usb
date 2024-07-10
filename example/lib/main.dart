@@ -27,6 +27,20 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
+  ///读取名称
+  Future<void> printName(UsbInfo usbInfo) async {
+    final name = await usbInfo.readUsbName();
+    print(name.productName);
+    print(name.manufacturerName);
+    print(name.serialNumber);
+  }
+
+  Future<void> writeData(UsbInfo info) async {
+    UsbHandle handle = await info.open();
+    handle.writeData(
+        endpoint: 3, buf: "hello world".codeUnits, timeout: BigInt.from(1000));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,13 +57,7 @@ class _MyAppState extends State<MyApp> {
                     for (var element in usbs) {
                       print(element.vendorId);
                       print(element.productId);
-                      element.readUsbName().then(
-                        (name) {
-                          print(name.productName);
-                          print(name.manufacturerName);
-                          print(name.serialNumber);
-                        },
-                      );
+                      printName(element);
                     }
                   },
                   child: Text("Get")),

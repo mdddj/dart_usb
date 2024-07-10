@@ -16,7 +16,11 @@ Future<List<UsbInfo>> getUsbInfos() =>
     RustLib.instance.api.crateApiUsbGetUsbInfos();
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbHandle>>
-abstract class UsbHandle implements RustOpaqueInterface {}
+abstract class UsbHandle implements RustOpaqueInterface {
+  ///写数据
+  Future<BigInt> writeData(
+      {required int endpoint, required List<int> buf, required BigInt timeout});
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbInfo>>
 abstract class UsbInfo implements RustOpaqueInterface {

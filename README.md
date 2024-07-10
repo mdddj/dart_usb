@@ -16,10 +16,10 @@ void main(){
 }
 ```
 
-## api 
+## Api
 
 
-### get usb list
+#### get usb list
 
 ```dart
 List<UsbInfo> usbList = await getUsbInfos();
@@ -31,54 +31,25 @@ for (var element in usbList) {
 }
 ```
 
-### get usb name
-
-```
-UsbName name = await UsbInfo.readUsbName();
-print(name.productName);
-print(name.manufacturerName);
-print(name.serialNumber);
-```
-
-
-
-
-
-## UsbInfo Object
+#### get usb name
 
 ```dart
-
-@freezed
-@meta.immutable
-class UsbInfo with _$UsbInfo {
-  const factory UsbInfo({
-    required int busNumber,
-    required int address,
-    required int vendorId,
-    required int productId,
-    required int numConfigurations,
-    required int maxPacketSize,
-    required int protocolCode,
-    required int subClassCode,
-    required int classCode,
-    int? serialNumberStringIndex,
-    int? productStringIndex,
-    int? manufacturerStringIndex,
-    required UsbVersion usbVersion,
-    required UsbVersion deviceVersion,
-    required int descriptorType,
-    required int length,
-  }) = _UsbInfo;
-}
-
-@freezed
-@meta.immutable
-class UsbVersion with _$UsbVersion {
-  const factory UsbVersion({
-    required int field0,
-    required int field1,
-    required int field2,
-  }) = _UsbVersion;
-}
-
+ Future<void> printName(UsbInfo usbInfo) async {
+    final name = await usbInfo.readUsbName();
+    print(name.productName);
+    print(name.manufacturerName);
+    print(name.serialNumber);
+  }
 ```
+
+#### write data 
+```dart
+  Future<void> writeData(UsbInfo info) async {
+    UsbHandle handle = await info.open();
+    handle.writeData(
+        endpoint: 3, buf: "hello world".codeUnits, timeout: BigInt.from(1000));
+  }
+```
+
+
+

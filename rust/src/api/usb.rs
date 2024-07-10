@@ -43,6 +43,7 @@ impl UsbInfo {
         }
     }
 
+    // 读取设备的名字
     pub fn read_usb_name(&self) -> Result<UsbName, String> {
         match self.device_origin.open() {
             Ok(handle) => {
@@ -80,6 +81,7 @@ impl UsbInfo {
 pub struct UsbHandle {
     handle: DeviceHandle<GlobalContext>,
 }
+
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UsbName {
     pub manufacturer_name: Option<String>,
@@ -87,7 +89,18 @@ pub struct UsbName {
     pub serial_number: Option<String>,
 }
 
-impl UsbHandle {}
+impl UsbHandle {
+    ///写数据
+    pub fn write_data(&self, endpoint: u8, buf: &[u8], timeout: u64) -> Result<usize, String> {
+        let r = self
+            .handle
+            .write_bulk(endpoint, buf, Duration::from_millis(timeout));
+        match r {
+            Ok(size) => Ok(size),
+            Err(e) => Err(e.to_string()),
+        }
+    }
+}
 
 impl Into<UsbInfo> for Device<GlobalContext> {
     fn into(self) -> UsbInfo {
