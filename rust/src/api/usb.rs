@@ -1,7 +1,10 @@
+use std::time::Duration;
+
 use flutter_rust_bridge::frb;
-use rusb::{Device, GlobalContext, Version};
+use rusb::{Device, DeviceHandle, GlobalContext, Version};
 
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash, PartialOrd, Ord)]
 pub struct UsbVersion(pub u8, pub u8, pub u8);
 
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
@@ -22,12 +25,69 @@ pub struct UsbInfo {
     pub device_version: UsbVersion,
     pub descriptor_type: u8,
     pub length: u8,
+    device_origin: Device<GlobalContext>,
 }
 
 /// get all usb infos
 pub fn get_usb_infos() -> Vec<UsbInfo> {
     rusb::devices().unwrap().iter().map(|i| i.into()).collect()
 }
+
+impl UsbInfo {
+    //打开设备
+    pub fn open(&self) -> Result<UsbHandle, String> {
+        let r = self.device_origin.open();
+        match r {
+            Ok(ok) => Ok(UsbHandle { handle: ok }),
+            Err(e) => Err(e.to_string()),
+        }
+    }
+
+    pub fn read_usb_name(&self) -> Result<UsbName, String> {
+        match self.device_origin.open() {
+            Ok(handle) => {
+                let timeout = Duration::from_secs(60);
+                if let Ok(languages) = handle.read_languages(timeout) {
+                    if languages.len() > 0 {
+                        let language = languages[0];
+                        let device_desc = self.device_origin.device_descriptor().unwrap();
+                        let manufacturer_name = handle
+                            .read_manufacturer_string(language, &device_desc, timeout)
+                            .ok();
+                        let product_name = handle
+                            .read_product_string(language, &device_desc, timeout)
+                            .ok();
+                        let serial_number = handle
+                            .read_serial_number_string(language, &device_desc, timeout)
+                            .ok();
+                        Ok(UsbName {
+                            manufacturer_name: manufacturer_name,
+                            product_name: product_name,
+                            serial_number: serial_number,
+                        })
+                    } else {
+                        Err("Unable to obtain device name".to_string())
+                    }
+                } else {
+                    Err("Unable to obtain device name".to_string())
+                }
+            }
+            Err(e) => Err(e.to_string()),
+        }
+    }
+}
+
+pub struct UsbHandle {
+    handle: DeviceHandle<GlobalContext>,
+}
+#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+pub struct UsbName {
+    pub manufacturer_name: Option<String>,
+    pub product_name: Option<String>,
+    pub serial_number: Option<String>,
+}
+
+impl UsbHandle {}
 
 impl Into<UsbInfo> for Device<GlobalContext> {
     fn into(self) -> UsbInfo {
@@ -50,6 +110,7 @@ impl Into<UsbInfo> for Device<GlobalContext> {
             device_version: desc.device_version().into(),
             descriptor_type: desc.descriptor_type(),
             length: desc.length(),
+            device_origin: self,
         };
     }
 }

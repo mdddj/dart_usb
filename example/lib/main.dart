@@ -43,6 +43,13 @@ class _MyAppState extends State<MyApp> {
                     for (var element in usbs) {
                       print(element.vendorId);
                       print(element.productId);
+                      element.readUsbName().then(
+                        (name) {
+                          print(name.productName);
+                          print(name.manufacturerName);
+                          print(name.serialNumber);
+                        },
+                      );
                     }
                   },
                   child: Text("Get")),

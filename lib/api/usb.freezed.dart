@@ -15,59 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UsbInfo {
-  int get busNumber => throw _privateConstructorUsedError;
-  int get address => throw _privateConstructorUsedError;
-  int get vendorId => throw _privateConstructorUsedError;
-  int get productId => throw _privateConstructorUsedError;
-  int get numConfigurations => throw _privateConstructorUsedError;
-  int get maxPacketSize => throw _privateConstructorUsedError;
-  int get protocolCode => throw _privateConstructorUsedError;
-  int get subClassCode => throw _privateConstructorUsedError;
-  int get classCode => throw _privateConstructorUsedError;
-  int? get serialNumberStringIndex => throw _privateConstructorUsedError;
-  int? get productStringIndex => throw _privateConstructorUsedError;
-  int? get manufacturerStringIndex => throw _privateConstructorUsedError;
-  UsbVersion get usbVersion => throw _privateConstructorUsedError;
-  UsbVersion get deviceVersion => throw _privateConstructorUsedError;
-  int get descriptorType => throw _privateConstructorUsedError;
-  int get length => throw _privateConstructorUsedError;
+mixin _$UsbName {
+  String? get manufacturerName => throw _privateConstructorUsedError;
+  String? get productName => throw _privateConstructorUsedError;
+  String? get serialNumber => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UsbInfoCopyWith<UsbInfo> get copyWith => throw _privateConstructorUsedError;
+  $UsbNameCopyWith<UsbName> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UsbInfoCopyWith<$Res> {
-  factory $UsbInfoCopyWith(UsbInfo value, $Res Function(UsbInfo) then) =
-      _$UsbInfoCopyWithImpl<$Res, UsbInfo>;
+abstract class $UsbNameCopyWith<$Res> {
+  factory $UsbNameCopyWith(UsbName value, $Res Function(UsbName) then) =
+      _$UsbNameCopyWithImpl<$Res, UsbName>;
   @useResult
   $Res call(
-      {int busNumber,
-      int address,
-      int vendorId,
-      int productId,
-      int numConfigurations,
-      int maxPacketSize,
-      int protocolCode,
-      int subClassCode,
-      int classCode,
-      int? serialNumberStringIndex,
-      int? productStringIndex,
-      int? manufacturerStringIndex,
-      UsbVersion usbVersion,
-      UsbVersion deviceVersion,
-      int descriptorType,
-      int length});
-
-  $UsbVersionCopyWith<$Res> get usbVersion;
-  $UsbVersionCopyWith<$Res> get deviceVersion;
+      {String? manufacturerName, String? productName, String? serialNumber});
 }
 
 /// @nodoc
-class _$UsbInfoCopyWithImpl<$Res, $Val extends UsbInfo>
-    implements $UsbInfoCopyWith<$Res> {
-  _$UsbInfoCopyWithImpl(this._value, this._then);
+class _$UsbNameCopyWithImpl<$Res, $Val extends UsbName>
+    implements $UsbNameCopyWith<$Res> {
+  _$UsbNameCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,415 +46,127 @@ class _$UsbInfoCopyWithImpl<$Res, $Val extends UsbInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? busNumber = null,
-    Object? address = null,
-    Object? vendorId = null,
-    Object? productId = null,
-    Object? numConfigurations = null,
-    Object? maxPacketSize = null,
-    Object? protocolCode = null,
-    Object? subClassCode = null,
-    Object? classCode = null,
-    Object? serialNumberStringIndex = freezed,
-    Object? productStringIndex = freezed,
-    Object? manufacturerStringIndex = freezed,
-    Object? usbVersion = null,
-    Object? deviceVersion = null,
-    Object? descriptorType = null,
-    Object? length = null,
+    Object? manufacturerName = freezed,
+    Object? productName = freezed,
+    Object? serialNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      busNumber: null == busNumber
-          ? _value.busNumber
-          : busNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as int,
-      vendorId: null == vendorId
-          ? _value.vendorId
-          : vendorId // ignore: cast_nullable_to_non_nullable
-              as int,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
-      numConfigurations: null == numConfigurations
-          ? _value.numConfigurations
-          : numConfigurations // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxPacketSize: null == maxPacketSize
-          ? _value.maxPacketSize
-          : maxPacketSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      protocolCode: null == protocolCode
-          ? _value.protocolCode
-          : protocolCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      subClassCode: null == subClassCode
-          ? _value.subClassCode
-          : subClassCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      classCode: null == classCode
-          ? _value.classCode
-          : classCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      serialNumberStringIndex: freezed == serialNumberStringIndex
-          ? _value.serialNumberStringIndex
-          : serialNumberStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      productStringIndex: freezed == productStringIndex
-          ? _value.productStringIndex
-          : productStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      manufacturerStringIndex: freezed == manufacturerStringIndex
-          ? _value.manufacturerStringIndex
-          : manufacturerStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      usbVersion: null == usbVersion
-          ? _value.usbVersion
-          : usbVersion // ignore: cast_nullable_to_non_nullable
-              as UsbVersion,
-      deviceVersion: null == deviceVersion
-          ? _value.deviceVersion
-          : deviceVersion // ignore: cast_nullable_to_non_nullable
-              as UsbVersion,
-      descriptorType: null == descriptorType
-          ? _value.descriptorType
-          : descriptorType // ignore: cast_nullable_to_non_nullable
-              as int,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as int,
+      manufacturerName: freezed == manufacturerName
+          ? _value.manufacturerName
+          : manufacturerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productName: freezed == productName
+          ? _value.productName
+          : productName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      serialNumber: freezed == serialNumber
+          ? _value.serialNumber
+          : serialNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UsbVersionCopyWith<$Res> get usbVersion {
-    return $UsbVersionCopyWith<$Res>(_value.usbVersion, (value) {
-      return _then(_value.copyWith(usbVersion: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UsbVersionCopyWith<$Res> get deviceVersion {
-    return $UsbVersionCopyWith<$Res>(_value.deviceVersion, (value) {
-      return _then(_value.copyWith(deviceVersion: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$UsbInfoImplCopyWith<$Res> implements $UsbInfoCopyWith<$Res> {
-  factory _$$UsbInfoImplCopyWith(
-          _$UsbInfoImpl value, $Res Function(_$UsbInfoImpl) then) =
-      __$$UsbInfoImplCopyWithImpl<$Res>;
+abstract class _$$UsbNameImplCopyWith<$Res> implements $UsbNameCopyWith<$Res> {
+  factory _$$UsbNameImplCopyWith(
+          _$UsbNameImpl value, $Res Function(_$UsbNameImpl) then) =
+      __$$UsbNameImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int busNumber,
-      int address,
-      int vendorId,
-      int productId,
-      int numConfigurations,
-      int maxPacketSize,
-      int protocolCode,
-      int subClassCode,
-      int classCode,
-      int? serialNumberStringIndex,
-      int? productStringIndex,
-      int? manufacturerStringIndex,
-      UsbVersion usbVersion,
-      UsbVersion deviceVersion,
-      int descriptorType,
-      int length});
-
-  @override
-  $UsbVersionCopyWith<$Res> get usbVersion;
-  @override
-  $UsbVersionCopyWith<$Res> get deviceVersion;
+      {String? manufacturerName, String? productName, String? serialNumber});
 }
 
 /// @nodoc
-class __$$UsbInfoImplCopyWithImpl<$Res>
-    extends _$UsbInfoCopyWithImpl<$Res, _$UsbInfoImpl>
-    implements _$$UsbInfoImplCopyWith<$Res> {
-  __$$UsbInfoImplCopyWithImpl(
-      _$UsbInfoImpl _value, $Res Function(_$UsbInfoImpl) _then)
+class __$$UsbNameImplCopyWithImpl<$Res>
+    extends _$UsbNameCopyWithImpl<$Res, _$UsbNameImpl>
+    implements _$$UsbNameImplCopyWith<$Res> {
+  __$$UsbNameImplCopyWithImpl(
+      _$UsbNameImpl _value, $Res Function(_$UsbNameImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? busNumber = null,
-    Object? address = null,
-    Object? vendorId = null,
-    Object? productId = null,
-    Object? numConfigurations = null,
-    Object? maxPacketSize = null,
-    Object? protocolCode = null,
-    Object? subClassCode = null,
-    Object? classCode = null,
-    Object? serialNumberStringIndex = freezed,
-    Object? productStringIndex = freezed,
-    Object? manufacturerStringIndex = freezed,
-    Object? usbVersion = null,
-    Object? deviceVersion = null,
-    Object? descriptorType = null,
-    Object? length = null,
+    Object? manufacturerName = freezed,
+    Object? productName = freezed,
+    Object? serialNumber = freezed,
   }) {
-    return _then(_$UsbInfoImpl(
-      busNumber: null == busNumber
-          ? _value.busNumber
-          : busNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as int,
-      vendorId: null == vendorId
-          ? _value.vendorId
-          : vendorId // ignore: cast_nullable_to_non_nullable
-              as int,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
-      numConfigurations: null == numConfigurations
-          ? _value.numConfigurations
-          : numConfigurations // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxPacketSize: null == maxPacketSize
-          ? _value.maxPacketSize
-          : maxPacketSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      protocolCode: null == protocolCode
-          ? _value.protocolCode
-          : protocolCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      subClassCode: null == subClassCode
-          ? _value.subClassCode
-          : subClassCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      classCode: null == classCode
-          ? _value.classCode
-          : classCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      serialNumberStringIndex: freezed == serialNumberStringIndex
-          ? _value.serialNumberStringIndex
-          : serialNumberStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      productStringIndex: freezed == productStringIndex
-          ? _value.productStringIndex
-          : productStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      manufacturerStringIndex: freezed == manufacturerStringIndex
-          ? _value.manufacturerStringIndex
-          : manufacturerStringIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      usbVersion: null == usbVersion
-          ? _value.usbVersion
-          : usbVersion // ignore: cast_nullable_to_non_nullable
-              as UsbVersion,
-      deviceVersion: null == deviceVersion
-          ? _value.deviceVersion
-          : deviceVersion // ignore: cast_nullable_to_non_nullable
-              as UsbVersion,
-      descriptorType: null == descriptorType
-          ? _value.descriptorType
-          : descriptorType // ignore: cast_nullable_to_non_nullable
-              as int,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$UsbNameImpl(
+      manufacturerName: freezed == manufacturerName
+          ? _value.manufacturerName
+          : manufacturerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productName: freezed == productName
+          ? _value.productName
+          : productName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      serialNumber: freezed == serialNumber
+          ? _value.serialNumber
+          : serialNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UsbInfoImpl implements _UsbInfo {
-  const _$UsbInfoImpl(
-      {required this.busNumber,
-      required this.address,
-      required this.vendorId,
-      required this.productId,
-      required this.numConfigurations,
-      required this.maxPacketSize,
-      required this.protocolCode,
-      required this.subClassCode,
-      required this.classCode,
-      this.serialNumberStringIndex,
-      this.productStringIndex,
-      this.manufacturerStringIndex,
-      required this.usbVersion,
-      required this.deviceVersion,
-      required this.descriptorType,
-      required this.length});
+class _$UsbNameImpl implements _UsbName {
+  const _$UsbNameImpl(
+      {this.manufacturerName, this.productName, this.serialNumber});
 
   @override
-  final int busNumber;
+  final String? manufacturerName;
   @override
-  final int address;
+  final String? productName;
   @override
-  final int vendorId;
-  @override
-  final int productId;
-  @override
-  final int numConfigurations;
-  @override
-  final int maxPacketSize;
-  @override
-  final int protocolCode;
-  @override
-  final int subClassCode;
-  @override
-  final int classCode;
-  @override
-  final int? serialNumberStringIndex;
-  @override
-  final int? productStringIndex;
-  @override
-  final int? manufacturerStringIndex;
-  @override
-  final UsbVersion usbVersion;
-  @override
-  final UsbVersion deviceVersion;
-  @override
-  final int descriptorType;
-  @override
-  final int length;
+  final String? serialNumber;
 
   @override
   String toString() {
-    return 'UsbInfo(busNumber: $busNumber, address: $address, vendorId: $vendorId, productId: $productId, numConfigurations: $numConfigurations, maxPacketSize: $maxPacketSize, protocolCode: $protocolCode, subClassCode: $subClassCode, classCode: $classCode, serialNumberStringIndex: $serialNumberStringIndex, productStringIndex: $productStringIndex, manufacturerStringIndex: $manufacturerStringIndex, usbVersion: $usbVersion, deviceVersion: $deviceVersion, descriptorType: $descriptorType, length: $length)';
+    return 'UsbName(manufacturerName: $manufacturerName, productName: $productName, serialNumber: $serialNumber)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UsbInfoImpl &&
-            (identical(other.busNumber, busNumber) ||
-                other.busNumber == busNumber) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.vendorId, vendorId) ||
-                other.vendorId == vendorId) &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
-            (identical(other.numConfigurations, numConfigurations) ||
-                other.numConfigurations == numConfigurations) &&
-            (identical(other.maxPacketSize, maxPacketSize) ||
-                other.maxPacketSize == maxPacketSize) &&
-            (identical(other.protocolCode, protocolCode) ||
-                other.protocolCode == protocolCode) &&
-            (identical(other.subClassCode, subClassCode) ||
-                other.subClassCode == subClassCode) &&
-            (identical(other.classCode, classCode) ||
-                other.classCode == classCode) &&
-            (identical(
-                    other.serialNumberStringIndex, serialNumberStringIndex) ||
-                other.serialNumberStringIndex == serialNumberStringIndex) &&
-            (identical(other.productStringIndex, productStringIndex) ||
-                other.productStringIndex == productStringIndex) &&
-            (identical(
-                    other.manufacturerStringIndex, manufacturerStringIndex) ||
-                other.manufacturerStringIndex == manufacturerStringIndex) &&
-            (identical(other.usbVersion, usbVersion) ||
-                other.usbVersion == usbVersion) &&
-            (identical(other.deviceVersion, deviceVersion) ||
-                other.deviceVersion == deviceVersion) &&
-            (identical(other.descriptorType, descriptorType) ||
-                other.descriptorType == descriptorType) &&
-            (identical(other.length, length) || other.length == length));
+            other is _$UsbNameImpl &&
+            (identical(other.manufacturerName, manufacturerName) ||
+                other.manufacturerName == manufacturerName) &&
+            (identical(other.productName, productName) ||
+                other.productName == productName) &&
+            (identical(other.serialNumber, serialNumber) ||
+                other.serialNumber == serialNumber));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      busNumber,
-      address,
-      vendorId,
-      productId,
-      numConfigurations,
-      maxPacketSize,
-      protocolCode,
-      subClassCode,
-      classCode,
-      serialNumberStringIndex,
-      productStringIndex,
-      manufacturerStringIndex,
-      usbVersion,
-      deviceVersion,
-      descriptorType,
-      length);
+  int get hashCode =>
+      Object.hash(runtimeType, manufacturerName, productName, serialNumber);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UsbInfoImplCopyWith<_$UsbInfoImpl> get copyWith =>
-      __$$UsbInfoImplCopyWithImpl<_$UsbInfoImpl>(this, _$identity);
+  _$$UsbNameImplCopyWith<_$UsbNameImpl> get copyWith =>
+      __$$UsbNameImplCopyWithImpl<_$UsbNameImpl>(this, _$identity);
 }
 
-abstract class _UsbInfo implements UsbInfo {
-  const factory _UsbInfo(
-      {required final int busNumber,
-      required final int address,
-      required final int vendorId,
-      required final int productId,
-      required final int numConfigurations,
-      required final int maxPacketSize,
-      required final int protocolCode,
-      required final int subClassCode,
-      required final int classCode,
-      final int? serialNumberStringIndex,
-      final int? productStringIndex,
-      final int? manufacturerStringIndex,
-      required final UsbVersion usbVersion,
-      required final UsbVersion deviceVersion,
-      required final int descriptorType,
-      required final int length}) = _$UsbInfoImpl;
+abstract class _UsbName implements UsbName {
+  const factory _UsbName(
+      {final String? manufacturerName,
+      final String? productName,
+      final String? serialNumber}) = _$UsbNameImpl;
 
   @override
-  int get busNumber;
+  String? get manufacturerName;
   @override
-  int get address;
+  String? get productName;
   @override
-  int get vendorId;
-  @override
-  int get productId;
-  @override
-  int get numConfigurations;
-  @override
-  int get maxPacketSize;
-  @override
-  int get protocolCode;
-  @override
-  int get subClassCode;
-  @override
-  int get classCode;
-  @override
-  int? get serialNumberStringIndex;
-  @override
-  int? get productStringIndex;
-  @override
-  int? get manufacturerStringIndex;
-  @override
-  UsbVersion get usbVersion;
-  @override
-  UsbVersion get deviceVersion;
-  @override
-  int get descriptorType;
-  @override
-  int get length;
+  String? get serialNumber;
   @override
   @JsonKey(ignore: true)
-  _$$UsbInfoImplCopyWith<_$UsbInfoImpl> get copyWith =>
+  _$$UsbNameImplCopyWith<_$UsbNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

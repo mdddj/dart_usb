@@ -18,6 +18,9 @@ void main(){
 
 ## api 
 
+
+### get usb list
+
 ```dart
 List<UsbInfo> usbList = await getUsbInfos();
 
@@ -27,6 +30,18 @@ for (var element in usbList) {
     print(element.productId);
 }
 ```
+
+### get usb name
+
+```
+UsbName name = await UsbInfo.readUsbName();
+print(name.productName);
+print(name.manufacturerName);
+print(name.serialNumber);
+```
+
+
+
 
 
 ## UsbInfo Object

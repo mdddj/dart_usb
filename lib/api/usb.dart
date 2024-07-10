@@ -9,33 +9,94 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'usb.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `into`, `into`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `clone`, `cmp`, `eq`, `fmt`, `hash`, `into`, `into`, `partial_cmp`
 
 /// get all usb infos
 Future<List<UsbInfo>> getUsbInfos() =>
     RustLib.instance.api.crateApiUsbGetUsbInfos();
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbHandle>>
+abstract class UsbHandle implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbInfo>>
+abstract class UsbInfo implements RustOpaqueInterface {
+  int get address;
+
+  int get busNumber;
+
+  int get classCode;
+
+  int get descriptorType;
+
+  UsbVersion get deviceVersion;
+
+  int get length;
+
+  int? get manufacturerStringIndex;
+
+  int get maxPacketSize;
+
+  int get numConfigurations;
+
+  int get productId;
+
+  int? get productStringIndex;
+
+  int get protocolCode;
+
+  int? get serialNumberStringIndex;
+
+  int get subClassCode;
+
+  UsbVersion get usbVersion;
+
+  int get vendorId;
+
+  set address(int address);
+
+  set busNumber(int busNumber);
+
+  set classCode(int classCode);
+
+  set descriptorType(int descriptorType);
+
+  set deviceVersion(UsbVersion deviceVersion);
+
+  set length(int length);
+
+  set manufacturerStringIndex(int? manufacturerStringIndex);
+
+  set maxPacketSize(int maxPacketSize);
+
+  set numConfigurations(int numConfigurations);
+
+  set productId(int productId);
+
+  set productStringIndex(int? productStringIndex);
+
+  set protocolCode(int protocolCode);
+
+  set serialNumberStringIndex(int? serialNumberStringIndex);
+
+  set subClassCode(int subClassCode);
+
+  set usbVersion(UsbVersion usbVersion);
+
+  set vendorId(int vendorId);
+
+  Future<UsbHandle> open();
+
+  Future<UsbName> readUsbName();
+}
+
 @freezed
 @meta.immutable
-class UsbInfo with _$UsbInfo {
-  const factory UsbInfo({
-    required int busNumber,
-    required int address,
-    required int vendorId,
-    required int productId,
-    required int numConfigurations,
-    required int maxPacketSize,
-    required int protocolCode,
-    required int subClassCode,
-    required int classCode,
-    int? serialNumberStringIndex,
-    int? productStringIndex,
-    int? manufacturerStringIndex,
-    required UsbVersion usbVersion,
-    required UsbVersion deviceVersion,
-    required int descriptorType,
-    required int length,
-  }) = _UsbInfo;
+class UsbName with _$UsbName {
+  const factory UsbName({
+    String? manufacturerName,
+    String? productName,
+    String? serialNumber,
+  }) = _UsbName;
 }
 
 @freezed

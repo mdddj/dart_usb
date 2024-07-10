@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.1.0';
 
   @override
-  int get rustContentHash => 690733595;
+  int get rustContentHash => 1427433483;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,7 +68,111 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  int crateApiUsbUsbInfoAutoAccessorGetAddress({required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetBusNumber({required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetClassCode({required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetDescriptorType({required UsbInfo that});
+
+  UsbVersion crateApiUsbUsbInfoAutoAccessorGetDeviceVersion(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetLength({required UsbInfo that});
+
+  int? crateApiUsbUsbInfoAutoAccessorGetManufacturerStringIndex(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetMaxPacketSize({required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetNumConfigurations(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetProductId({required UsbInfo that});
+
+  int? crateApiUsbUsbInfoAutoAccessorGetProductStringIndex(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetProtocolCode({required UsbInfo that});
+
+  int? crateApiUsbUsbInfoAutoAccessorGetSerialNumberStringIndex(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetSubClassCode({required UsbInfo that});
+
+  UsbVersion crateApiUsbUsbInfoAutoAccessorGetUsbVersion(
+      {required UsbInfo that});
+
+  int crateApiUsbUsbInfoAutoAccessorGetVendorId({required UsbInfo that});
+
+  void crateApiUsbUsbInfoAutoAccessorSetAddress(
+      {required UsbInfo that, required int address});
+
+  void crateApiUsbUsbInfoAutoAccessorSetBusNumber(
+      {required UsbInfo that, required int busNumber});
+
+  void crateApiUsbUsbInfoAutoAccessorSetClassCode(
+      {required UsbInfo that, required int classCode});
+
+  void crateApiUsbUsbInfoAutoAccessorSetDescriptorType(
+      {required UsbInfo that, required int descriptorType});
+
+  void crateApiUsbUsbInfoAutoAccessorSetDeviceVersion(
+      {required UsbInfo that, required UsbVersion deviceVersion});
+
+  void crateApiUsbUsbInfoAutoAccessorSetLength(
+      {required UsbInfo that, required int length});
+
+  void crateApiUsbUsbInfoAutoAccessorSetManufacturerStringIndex(
+      {required UsbInfo that, int? manufacturerStringIndex});
+
+  void crateApiUsbUsbInfoAutoAccessorSetMaxPacketSize(
+      {required UsbInfo that, required int maxPacketSize});
+
+  void crateApiUsbUsbInfoAutoAccessorSetNumConfigurations(
+      {required UsbInfo that, required int numConfigurations});
+
+  void crateApiUsbUsbInfoAutoAccessorSetProductId(
+      {required UsbInfo that, required int productId});
+
+  void crateApiUsbUsbInfoAutoAccessorSetProductStringIndex(
+      {required UsbInfo that, int? productStringIndex});
+
+  void crateApiUsbUsbInfoAutoAccessorSetProtocolCode(
+      {required UsbInfo that, required int protocolCode});
+
+  void crateApiUsbUsbInfoAutoAccessorSetSerialNumberStringIndex(
+      {required UsbInfo that, int? serialNumberStringIndex});
+
+  void crateApiUsbUsbInfoAutoAccessorSetSubClassCode(
+      {required UsbInfo that, required int subClassCode});
+
+  void crateApiUsbUsbInfoAutoAccessorSetUsbVersion(
+      {required UsbInfo that, required UsbVersion usbVersion});
+
+  void crateApiUsbUsbInfoAutoAccessorSetVendorId(
+      {required UsbInfo that, required int vendorId});
+
+  Future<UsbHandle> crateApiUsbUsbInfoOpen({required UsbInfo that});
+
+  Future<UsbName> crateApiUsbUsbInfoReadUsbName({required UsbInfo that});
+
   Future<List<UsbInfo>> crateApiUsbGetUsbInfos();
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_UsbHandle;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_UsbHandle;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_UsbHandlePtr;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_UsbInfo;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_UsbInfo;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_UsbInfoPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -80,15 +184,918 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  int crateApiUsbUsbInfoAutoAccessorGetAddress({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetAddressConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetAddressConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_address",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetBusNumber({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetBusNumberConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetBusNumberConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_bus_number",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetClassCode({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetClassCodeConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetClassCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_class_code",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetDescriptorType({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetDescriptorTypeConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetDescriptorTypeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_descriptor_type",
+        argNames: ["that"],
+      );
+
+  @override
+  UsbVersion crateApiUsbUsbInfoAutoAccessorGetDeviceVersion(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usb_version,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetDeviceVersionConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetDeviceVersionConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_device_version",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetLength({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetLengthConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetLengthConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_length",
+        argNames: ["that"],
+      );
+
+  @override
+  int? crateApiUsbUsbInfoAutoAccessorGetManufacturerStringIndex(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiUsbUsbInfoAutoAccessorGetManufacturerStringIndexConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorGetManufacturerStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_get_manufacturer_string_index",
+            argNames: ["that"],
+          );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetMaxPacketSize({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetMaxPacketSizeConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetMaxPacketSizeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_max_packet_size",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetNumConfigurations(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 9)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetNumConfigurationsConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorGetNumConfigurationsConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_get_num_configurations",
+            argNames: ["that"],
+          );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetProductId({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetProductIdConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetProductIdConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_product_id",
+        argNames: ["that"],
+      );
+
+  @override
+  int? crateApiUsbUsbInfoAutoAccessorGetProductStringIndex(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetProductStringIndexConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorGetProductStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_get_product_string_index",
+            argNames: ["that"],
+          );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetProtocolCode({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 12)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetProtocolCodeConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetProtocolCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_protocol_code",
+        argNames: ["that"],
+      );
+
+  @override
+  int? crateApiUsbUsbInfoAutoAccessorGetSerialNumberStringIndex(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 13)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiUsbUsbInfoAutoAccessorGetSerialNumberStringIndexConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorGetSerialNumberStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_get_serial_number_string_index",
+            argNames: ["that"],
+          );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetSubClassCode({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 14)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetSubClassCodeConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetSubClassCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_sub_class_code",
+        argNames: ["that"],
+      );
+
+  @override
+  UsbVersion crateApiUsbUsbInfoAutoAccessorGetUsbVersion(
+      {required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 15)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usb_version,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetUsbVersionConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetUsbVersionConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_usb_version",
+        argNames: ["that"],
+      );
+
+  @override
+  int crateApiUsbUsbInfoAutoAccessorGetVendorId({required UsbInfo that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorGetVendorIdConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorGetVendorIdConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_get_vendor_id",
+        argNames: ["that"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetAddress(
+      {required UsbInfo that, required int address}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(address, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 17)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetAddressConstMeta,
+      argValues: [that, address],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetAddressConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_address",
+        argNames: ["that", "address"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetBusNumber(
+      {required UsbInfo that, required int busNumber}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(busNumber, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 18)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetBusNumberConstMeta,
+      argValues: [that, busNumber],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetBusNumberConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_bus_number",
+        argNames: ["that", "busNumber"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetClassCode(
+      {required UsbInfo that, required int classCode}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(classCode, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 19)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetClassCodeConstMeta,
+      argValues: [that, classCode],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetClassCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_class_code",
+        argNames: ["that", "classCode"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetDescriptorType(
+      {required UsbInfo that, required int descriptorType}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(descriptorType, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 20)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetDescriptorTypeConstMeta,
+      argValues: [that, descriptorType],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetDescriptorTypeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_descriptor_type",
+        argNames: ["that", "descriptorType"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetDeviceVersion(
+      {required UsbInfo that, required UsbVersion deviceVersion}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_usb_version(deviceVersion, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 21)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetDeviceVersionConstMeta,
+      argValues: [that, deviceVersion],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetDeviceVersionConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_device_version",
+        argNames: ["that", "deviceVersion"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetLength(
+      {required UsbInfo that, required int length}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(length, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 22)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetLengthConstMeta,
+      argValues: [that, length],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetLengthConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_length",
+        argNames: ["that", "length"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetManufacturerStringIndex(
+      {required UsbInfo that, int? manufacturerStringIndex}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_opt_box_autoadd_u_8(manufacturerStringIndex, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 23)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiUsbUsbInfoAutoAccessorSetManufacturerStringIndexConstMeta,
+      argValues: [that, manufacturerStringIndex],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorSetManufacturerStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_set_manufacturer_string_index",
+            argNames: ["that", "manufacturerStringIndex"],
+          );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetMaxPacketSize(
+      {required UsbInfo that, required int maxPacketSize}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(maxPacketSize, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 24)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetMaxPacketSizeConstMeta,
+      argValues: [that, maxPacketSize],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetMaxPacketSizeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_max_packet_size",
+        argNames: ["that", "maxPacketSize"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetNumConfigurations(
+      {required UsbInfo that, required int numConfigurations}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(numConfigurations, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 25)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetNumConfigurationsConstMeta,
+      argValues: [that, numConfigurations],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorSetNumConfigurationsConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_set_num_configurations",
+            argNames: ["that", "numConfigurations"],
+          );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetProductId(
+      {required UsbInfo that, required int productId}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_16(productId, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 26)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetProductIdConstMeta,
+      argValues: [that, productId],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetProductIdConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_product_id",
+        argNames: ["that", "productId"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetProductStringIndex(
+      {required UsbInfo that, int? productStringIndex}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_opt_box_autoadd_u_8(productStringIndex, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 27)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetProductStringIndexConstMeta,
+      argValues: [that, productStringIndex],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorSetProductStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_set_product_string_index",
+            argNames: ["that", "productStringIndex"],
+          );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetProtocolCode(
+      {required UsbInfo that, required int protocolCode}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(protocolCode, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 28)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetProtocolCodeConstMeta,
+      argValues: [that, protocolCode],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetProtocolCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_protocol_code",
+        argNames: ["that", "protocolCode"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetSerialNumberStringIndex(
+      {required UsbInfo that, int? serialNumberStringIndex}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_opt_box_autoadd_u_8(serialNumberStringIndex, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 29)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiUsbUsbInfoAutoAccessorSetSerialNumberStringIndexConstMeta,
+      argValues: [that, serialNumberStringIndex],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiUsbUsbInfoAutoAccessorSetSerialNumberStringIndexConstMeta =>
+          const TaskConstMeta(
+            debugName: "UsbInfo_auto_accessor_set_serial_number_string_index",
+            argNames: ["that", "serialNumberStringIndex"],
+          );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetSubClassCode(
+      {required UsbInfo that, required int subClassCode}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_8(subClassCode, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 30)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetSubClassCodeConstMeta,
+      argValues: [that, subClassCode],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetSubClassCodeConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_sub_class_code",
+        argNames: ["that", "subClassCode"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetUsbVersion(
+      {required UsbInfo that, required UsbVersion usbVersion}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_usb_version(usbVersion, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 31)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetUsbVersionConstMeta,
+      argValues: [that, usbVersion],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetUsbVersionConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_usb_version",
+        argNames: ["that", "usbVersion"],
+      );
+
+  @override
+  void crateApiUsbUsbInfoAutoAccessorSetVendorId(
+      {required UsbInfo that, required int vendorId}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        sse_encode_u_16(vendorId, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 32)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiUsbUsbInfoAutoAccessorSetVendorIdConstMeta,
+      argValues: [that, vendorId],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoAutoAccessorSetVendorIdConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_auto_accessor_set_vendor_id",
+        argNames: ["that", "vendorId"],
+      );
+
+  @override
+  Future<UsbHandle> crateApiUsbUsbInfoOpen({required UsbInfo that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 33, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle,
+        decodeErrorData: sse_decode_String,
+      ),
+      constMeta: kCrateApiUsbUsbInfoOpenConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoOpenConstMeta => const TaskConstMeta(
+        debugName: "UsbInfo_open",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<UsbName> crateApiUsbUsbInfoReadUsbName({required UsbInfo that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 34, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usb_name,
+        decodeErrorData: sse_decode_String,
+      ),
+      constMeta: kCrateApiUsbUsbInfoReadUsbNameConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiUsbUsbInfoReadUsbNameConstMeta =>
+      const TaskConstMeta(
+        debugName: "UsbInfo_read_usb_name",
+        argNames: ["that"],
+      );
+
+  @override
   Future<List<UsbInfo>> crateApiUsbGetUsbInfos() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+            funcId: 35, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_usb_info,
+        decodeSuccessData:
+            sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiUsbGetUsbInfosConstMeta,
@@ -102,6 +1109,76 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: [],
       );
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_UsbHandle => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_UsbHandle => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_UsbInfo => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_UsbInfo => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo;
+
+  @protected
+  UsbHandle
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbHandleImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  UsbInfo
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  UsbInfo
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  UsbInfo
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  UsbHandle
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbHandleImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  UsbInfo
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  String dco_decode_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as String;
+  }
+
   @protected
   int dco_decode_box_autoadd_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -109,9 +1186,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<UsbInfo> dco_decode_list_usb_info(dynamic raw) {
+  List<UsbInfo>
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_usb_info).toList();
+    return (raw as List<dynamic>)
+        .map(
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo)
+        .toList();
+  }
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as Uint8List;
+  }
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_String(raw);
   }
 
   @protected
@@ -139,28 +1233,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  UsbInfo dco_decode_usb_info(dynamic raw) {
+  UsbName dco_decode_usb_name(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 16)
-      throw Exception('unexpected arr length: expect 16 but see ${arr.length}');
-    return UsbInfo(
-      busNumber: dco_decode_u_8(arr[0]),
-      address: dco_decode_u_8(arr[1]),
-      vendorId: dco_decode_u_16(arr[2]),
-      productId: dco_decode_u_16(arr[3]),
-      numConfigurations: dco_decode_u_8(arr[4]),
-      maxPacketSize: dco_decode_u_8(arr[5]),
-      protocolCode: dco_decode_u_8(arr[6]),
-      subClassCode: dco_decode_u_8(arr[7]),
-      classCode: dco_decode_u_8(arr[8]),
-      serialNumberStringIndex: dco_decode_opt_box_autoadd_u_8(arr[9]),
-      productStringIndex: dco_decode_opt_box_autoadd_u_8(arr[10]),
-      manufacturerStringIndex: dco_decode_opt_box_autoadd_u_8(arr[11]),
-      usbVersion: dco_decode_usb_version(arr[12]),
-      deviceVersion: dco_decode_usb_version(arr[13]),
-      descriptorType: dco_decode_u_8(arr[14]),
-      length: dco_decode_u_8(arr[15]),
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return UsbName(
+      manufacturerName: dco_decode_opt_String(arr[0]),
+      productName: dco_decode_opt_String(arr[1]),
+      serialNumber: dco_decode_opt_String(arr[2]),
     );
   }
 
@@ -178,21 +1259,110 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BigInt dco_decode_usize(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeU64(raw);
+  }
+
+  @protected
+  UsbHandle
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbHandleImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  UsbInfo
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  UsbInfo
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  UsbInfo
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  UsbHandle
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbHandleImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  UsbInfo
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return UsbInfoImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  String sse_decode_String(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    return utf8.decoder.convert(inner);
+  }
+
+  @protected
   int sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_u_8(deserializer));
   }
 
   @protected
-  List<UsbInfo> sse_decode_list_usb_info(SseDeserializer deserializer) {
+  List<UsbInfo>
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <UsbInfo>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_usb_info(deserializer));
+      ans_.add(
+          sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+              deserializer));
     }
     return ans_;
+  }
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var len_ = sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  String? sse_decode_opt_String(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_String(deserializer));
+    } else {
+      return null;
+    }
   }
 
   @protected
@@ -224,43 +1394,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  UsbInfo sse_decode_usb_info(SseDeserializer deserializer) {
+  UsbName sse_decode_usb_name(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_busNumber = sse_decode_u_8(deserializer);
-    var var_address = sse_decode_u_8(deserializer);
-    var var_vendorId = sse_decode_u_16(deserializer);
-    var var_productId = sse_decode_u_16(deserializer);
-    var var_numConfigurations = sse_decode_u_8(deserializer);
-    var var_maxPacketSize = sse_decode_u_8(deserializer);
-    var var_protocolCode = sse_decode_u_8(deserializer);
-    var var_subClassCode = sse_decode_u_8(deserializer);
-    var var_classCode = sse_decode_u_8(deserializer);
-    var var_serialNumberStringIndex =
-        sse_decode_opt_box_autoadd_u_8(deserializer);
-    var var_productStringIndex = sse_decode_opt_box_autoadd_u_8(deserializer);
-    var var_manufacturerStringIndex =
-        sse_decode_opt_box_autoadd_u_8(deserializer);
-    var var_usbVersion = sse_decode_usb_version(deserializer);
-    var var_deviceVersion = sse_decode_usb_version(deserializer);
-    var var_descriptorType = sse_decode_u_8(deserializer);
-    var var_length = sse_decode_u_8(deserializer);
-    return UsbInfo(
-        busNumber: var_busNumber,
-        address: var_address,
-        vendorId: var_vendorId,
-        productId: var_productId,
-        numConfigurations: var_numConfigurations,
-        maxPacketSize: var_maxPacketSize,
-        protocolCode: var_protocolCode,
-        subClassCode: var_subClassCode,
-        classCode: var_classCode,
-        serialNumberStringIndex: var_serialNumberStringIndex,
-        productStringIndex: var_productStringIndex,
-        manufacturerStringIndex: var_manufacturerStringIndex,
-        usbVersion: var_usbVersion,
-        deviceVersion: var_deviceVersion,
-        descriptorType: var_descriptorType,
-        length: var_length);
+    var var_manufacturerName = sse_decode_opt_String(deserializer);
+    var var_productName = sse_decode_opt_String(deserializer);
+    var var_serialNumber = sse_decode_opt_String(deserializer);
+    return UsbName(
+        manufacturerName: var_manufacturerName,
+        productName: var_productName,
+        serialNumber: var_serialNumber);
   }
 
   @protected
@@ -271,6 +1413,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_field2 = sse_decode_u_8(deserializer);
     return UsbVersion(
         field0: var_field0, field1: var_field1, field2: var_field2);
+  }
+
+  @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -286,17 +1434,98 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          UsbHandle self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbHandleImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          UsbInfo self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbInfoImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          UsbInfo self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbInfoImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          UsbInfo self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbInfoImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbHandle(
+          UsbHandle self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbHandleImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          UsbInfo self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as UsbInfoImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_String(String self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_u_8(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_8(self, serializer);
   }
 
   @protected
-  void sse_encode_list_usb_info(List<UsbInfo> self, SseSerializer serializer) {
+  void
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          List<UsbInfo> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_usb_info(item, serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_opt_String(String? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_String(self, serializer);
     }
   }
 
@@ -328,24 +1557,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_usb_info(UsbInfo self, SseSerializer serializer) {
+  void sse_encode_usb_name(UsbName self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_u_8(self.busNumber, serializer);
-    sse_encode_u_8(self.address, serializer);
-    sse_encode_u_16(self.vendorId, serializer);
-    sse_encode_u_16(self.productId, serializer);
-    sse_encode_u_8(self.numConfigurations, serializer);
-    sse_encode_u_8(self.maxPacketSize, serializer);
-    sse_encode_u_8(self.protocolCode, serializer);
-    sse_encode_u_8(self.subClassCode, serializer);
-    sse_encode_u_8(self.classCode, serializer);
-    sse_encode_opt_box_autoadd_u_8(self.serialNumberStringIndex, serializer);
-    sse_encode_opt_box_autoadd_u_8(self.productStringIndex, serializer);
-    sse_encode_opt_box_autoadd_u_8(self.manufacturerStringIndex, serializer);
-    sse_encode_usb_version(self.usbVersion, serializer);
-    sse_encode_usb_version(self.deviceVersion, serializer);
-    sse_encode_u_8(self.descriptorType, serializer);
-    sse_encode_u_8(self.length, serializer);
+    sse_encode_opt_String(self.manufacturerName, serializer);
+    sse_encode_opt_String(self.productName, serializer);
+    sse_encode_opt_String(self.serialNumber, serializer);
   }
 
   @protected
@@ -354,6 +1570,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_u_8(self.field0, serializer);
     sse_encode_u_8(self.field1, serializer);
     sse_encode_u_8(self.field2, serializer);
+  }
+
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putBigUint64(self);
   }
 
   @protected
@@ -367,4 +1589,197 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
+}
+
+@sealed
+class UsbHandleImpl extends RustOpaque implements UsbHandle {
+  // Not to be used by end users
+  UsbHandleImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  UsbHandleImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_UsbHandle,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_UsbHandle,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_UsbHandlePtr,
+  );
+}
+
+@sealed
+class UsbInfoImpl extends RustOpaque implements UsbInfo {
+  // Not to be used by end users
+  UsbInfoImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  UsbInfoImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_UsbInfo,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_UsbInfo,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_UsbInfoPtr,
+  );
+
+  int get address =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetAddress(
+        that: this,
+      );
+
+  int get busNumber =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetBusNumber(
+        that: this,
+      );
+
+  int get classCode =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetClassCode(
+        that: this,
+      );
+
+  int get descriptorType =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetDescriptorType(
+        that: this,
+      );
+
+  UsbVersion get deviceVersion =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetDeviceVersion(
+        that: this,
+      );
+
+  int get length =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetLength(
+        that: this,
+      );
+
+  int? get manufacturerStringIndex => RustLib.instance.api
+          .crateApiUsbUsbInfoAutoAccessorGetManufacturerStringIndex(
+        that: this,
+      );
+
+  int get maxPacketSize =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetMaxPacketSize(
+        that: this,
+      );
+
+  int get numConfigurations =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetNumConfigurations(
+        that: this,
+      );
+
+  int get productId =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetProductId(
+        that: this,
+      );
+
+  int? get productStringIndex =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetProductStringIndex(
+        that: this,
+      );
+
+  int get protocolCode =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetProtocolCode(
+        that: this,
+      );
+
+  int? get serialNumberStringIndex => RustLib.instance.api
+          .crateApiUsbUsbInfoAutoAccessorGetSerialNumberStringIndex(
+        that: this,
+      );
+
+  int get subClassCode =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetSubClassCode(
+        that: this,
+      );
+
+  UsbVersion get usbVersion =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetUsbVersion(
+        that: this,
+      );
+
+  int get vendorId =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorGetVendorId(
+        that: this,
+      );
+
+  set address(int address) => RustLib.instance.api
+      .crateApiUsbUsbInfoAutoAccessorSetAddress(that: this, address: address);
+
+  set busNumber(int busNumber) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetBusNumber(
+          that: this, busNumber: busNumber);
+
+  set classCode(int classCode) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetClassCode(
+          that: this, classCode: classCode);
+
+  set descriptorType(int descriptorType) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetDescriptorType(
+          that: this, descriptorType: descriptorType);
+
+  set deviceVersion(UsbVersion deviceVersion) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetDeviceVersion(
+          that: this, deviceVersion: deviceVersion);
+
+  set length(int length) => RustLib.instance.api
+      .crateApiUsbUsbInfoAutoAccessorSetLength(that: this, length: length);
+
+  set manufacturerStringIndex(int? manufacturerStringIndex) =>
+      RustLib.instance.api
+          .crateApiUsbUsbInfoAutoAccessorSetManufacturerStringIndex(
+              that: this, manufacturerStringIndex: manufacturerStringIndex);
+
+  set maxPacketSize(int maxPacketSize) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetMaxPacketSize(
+          that: this, maxPacketSize: maxPacketSize);
+
+  set numConfigurations(int numConfigurations) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetNumConfigurations(
+          that: this, numConfigurations: numConfigurations);
+
+  set productId(int productId) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetProductId(
+          that: this, productId: productId);
+
+  set productStringIndex(int? productStringIndex) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetProductStringIndex(
+          that: this, productStringIndex: productStringIndex);
+
+  set protocolCode(int protocolCode) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetProtocolCode(
+          that: this, protocolCode: protocolCode);
+
+  set serialNumberStringIndex(int? serialNumberStringIndex) =>
+      RustLib.instance.api
+          .crateApiUsbUsbInfoAutoAccessorSetSerialNumberStringIndex(
+              that: this, serialNumberStringIndex: serialNumberStringIndex);
+
+  set subClassCode(int subClassCode) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetSubClassCode(
+          that: this, subClassCode: subClassCode);
+
+  set usbVersion(UsbVersion usbVersion) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetUsbVersion(
+          that: this, usbVersion: usbVersion);
+
+  set vendorId(int vendorId) =>
+      RustLib.instance.api.crateApiUsbUsbInfoAutoAccessorSetVendorId(
+          that: this, vendorId: vendorId);
+
+  Future<UsbHandle> open() => RustLib.instance.api.crateApiUsbUsbInfoOpen(
+        that: this,
+      );
+
+  Future<UsbName> readUsbName() =>
+      RustLib.instance.api.crateApiUsbUsbInfoReadUsbName(
+        that: this,
+      );
 }
