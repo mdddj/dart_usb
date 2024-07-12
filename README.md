@@ -51,5 +51,17 @@ for (var element in usbList) {
   }
 ```
 
+### listen
+
+```dart
+  void listenData() {
+    // 500 mills
+    listenUsbEventHandle(sleep: BigInt.from(500)).listen(
+      (event) {
+        print('usb devices : ${event}');
+      },
+    );
+  }
+```
 
 

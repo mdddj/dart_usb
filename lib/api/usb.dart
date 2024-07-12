@@ -15,6 +15,10 @@ part 'usb.freezed.dart';
 Future<List<UsbInfo>> getUsbInfos() =>
     RustLib.instance.api.crateApiUsbGetUsbInfos();
 
+///监听USB事件,它在线程池中执行
+Stream<List<UsbInfo>> listenUsbEventHandle({BigInt? sleep}) =>
+    RustLib.instance.api.crateApiUsbListenUsbEventHandle(sleep: sleep);
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbHandle>>
 abstract class UsbHandle implements RustOpaqueInterface {
   ///写数据

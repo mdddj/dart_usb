@@ -1,7 +1,10 @@
-use std::time::Duration;
+use std::{thread, time::Duration};
 
 use flutter_rust_bridge::frb;
 use rusb::{Device, DeviceHandle, GlobalContext, Version};
+
+use crate::frb_generated::{StreamSink, FLUTTER_RUST_BRIDGE_HANDLER};
+
 
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Hash, PartialOrd, Ord)]
@@ -132,4 +135,14 @@ impl Into<UsbVersion> for Version {
     fn into(self) -> UsbVersion {
         UsbVersion(self.0, self.1, self.2)
     }
+}
+
+
+///监听USB事件,它在线程池中执行
+pub fn listen_usb_event_handle(listen: StreamSink<Vec<UsbInfo>>,sleep: Option<u64>) {
+    FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().0.execute(move ||{
+        let infos = get_usb_infos();
+        let _ = listen.add(infos);
+        thread::sleep(Duration::from_millis(sleep.map_or(500, |v|v)))
+    });
 }

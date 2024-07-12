@@ -38,7 +38,18 @@ class _MyAppState extends State<MyApp> {
   Future<void> writeData(UsbInfo info) async {
     UsbHandle handle = await info.open();
     handle.writeData(
-        endpoint: 3, buf: "hello world".codeUnits, timeout: BigInt.from(1000));
+        endpoint: 0x01,
+        buf: "hello world".codeUnits,
+        timeout: BigInt.from(1000));
+  }
+
+  void listenData() {
+    // 500 毫秒
+    listenUsbEventHandle(sleep: BigInt.from(500)).listen(
+      (event) {
+        print('usb devices : ${event}');
+      },
+    );
   }
 
   @override
