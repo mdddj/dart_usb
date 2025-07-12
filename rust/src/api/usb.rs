@@ -1,10 +1,13 @@
-use std::{thread, time::Duration};
+use std::{
+    sync::{Arc, Mutex},
+    thread,
+    time::Duration,
+};
 
 use flutter_rust_bridge::frb;
 use rusb::{Device, DeviceHandle, GlobalContext, Version};
 
 use crate::frb_generated::{StreamSink, FLUTTER_RUST_BRIDGE_HANDLER};
-
 
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Hash, PartialOrd, Ord)]
@@ -32,12 +35,14 @@ pub struct UsbInfo {
 }
 
 /// get all usb infos
+#[frb(sync)]
 pub fn get_usb_infos() -> Vec<UsbInfo> {
     rusb::devices().unwrap().iter().map(|i| i.into()).collect()
 }
 
 impl UsbInfo {
     //打开设备
+    #[frb(sync)]
     pub fn open(&self) -> Result<UsbHandle, String> {
         let r = self.device_origin.open();
         match r {
@@ -47,6 +52,7 @@ impl UsbInfo {
     }
 
     // 读取设备的名字
+    #[frb(sync)]
     pub fn read_usb_name(&self) -> Result<UsbName, String> {
         match self.device_origin.open() {
             Ok(handle) => {
@@ -81,19 +87,43 @@ impl UsbInfo {
     }
 }
 
-pub struct UsbHandle {
-    handle: DeviceHandle<GlobalContext>,
-}
-
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UsbName {
     pub manufacturer_name: Option<String>,
     pub product_name: Option<String>,
     pub serial_number: Option<String>,
 }
+pub struct UsbHandle {
+    handle: DeviceHandle<GlobalContext>,
+}
 
 impl UsbHandle {
+    ///读取数据
+    #[frb(sync)]
+    pub fn read_interrupt(self, endpoint: u8, timeout: u64, listen: StreamSink<String>) {
+        let mut buffer = [0u8; 64];
+        let handle = Arc::new(Mutex::new(self.handle));
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .thread_pool()
+            .0
+            .execute(move || loop {
+                let get_handle = handle.lock().unwrap();
+                let size = get_handle.read_interrupt(
+                    endpoint,
+                    &mut buffer,
+                    Duration::from_millis(timeout),
+                );
+                match size {
+                    Ok(size_len) => {
+                        let data = String::from_utf8_lossy(&buffer[..size_len]);
+                        let _ = listen.add(data.to_string());
+                    }
+                    Err(_) => todo!(),
+                };
+            });
+    }
     ///写数据
+    #[frb(sync)]
     pub fn write_data(&self, endpoint: u8, buf: &[u8], timeout: u64) -> Result<usize, String> {
         let r = self
             .handle
@@ -102,6 +132,24 @@ impl UsbHandle {
             Ok(size) => Ok(size),
             Err(e) => Err(e.to_string()),
         }
+    }
+
+    ///设置设备配置(通常1)
+    #[frb(sync)]
+    pub fn set_active_configuration(&self, config: u8) {
+        let _ = self.handle.set_active_configuration(config);
+    }
+
+    ///声明接口 (通常是0)
+    #[frb(sync)]
+    pub fn claim_interface(&self, iface: u8) {
+        let _ = self.handle.claim_interface(iface);
+    }
+
+    ///释放接口
+    #[frb(sync)]
+    pub fn release_interface(&self, iface: u8) {
+        let _ = self.handle.release_interface(iface);
     }
 }
 
@@ -137,12 +185,15 @@ impl Into<UsbVersion> for Version {
     }
 }
 
-
 ///监听USB事件,它在线程池中执行
-pub fn listen_usb_event_handle(listen: StreamSink<Vec<UsbInfo>>,sleep: Option<u64>) {
-    FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().0.execute(move ||{
-        let infos = get_usb_infos();
-        let _ = listen.add(infos);
-        thread::sleep(Duration::from_millis(sleep.map_or(500, |v|v)))
-    });
+#[frb(sync)]
+pub fn listen_usb_event_handle(listen: StreamSink<Vec<UsbInfo>>, sleep: Option<u64>) {
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .thread_pool()
+        .0
+        .execute(move || loop {
+            let infos = get_usb_infos();
+            let _ = listen.add(infos);
+            thread::sleep(Duration::from_millis(sleep.map_or(500, |v| v)))
+        });
 }

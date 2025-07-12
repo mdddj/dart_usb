@@ -52,6 +52,21 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  ///监听usb口数据
+  Future<void> listenString(UsbInfo info) async {
+    final handle = await info.open(); //打开操作端口
+    handle.setActiveConfiguration(config: 1); //设置设备配置(通常1)
+    handle.claimInterface(iface: 0); //申明接口
+    ///监听数据,endpoint:端点
+    handle
+        .readInterrupt(endpoint: 0x81, timeout: BigInt.from(1000))
+        .listen((str) {
+      print("监听到数据字符串:$str");
+    });
+
+    //handle.releaseInterface(iface: 0); 释放接口
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
