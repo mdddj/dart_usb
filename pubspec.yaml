@@ -1,6 +1,6 @@
 name: dart_usb
 description: "dart library for obtaining USB interface information"
-version: 0.1.0
+version: 0.1.1
 homepage: "https://github.com/mdddj/dart_usb"
 
 environment:
@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   plugin_platform_interface: ^2.0.2
-  flutter_rust_bridge: 2.11.1
+  flutter_rust_bridge: ^2.11.1
   freezed_annotation: ^2.4.3
   json_annotation: ^4.9.0
   meta: ^1.10.0
