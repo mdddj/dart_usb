@@ -5,8 +5,8 @@ import 'package:dart_usb/dart_usb.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-void main() {
-  initUsbLibrary();
+Future<void> main() async {
+  await initUsbLibrary();
   runApp(const MyApp());
 }
 
@@ -29,14 +29,14 @@ class _MyAppState extends State<MyApp> {
 
   ///读取名称
   Future<void> printName(UsbInfo usbInfo) async {
-    final name = await usbInfo.readUsbName();
+    final name = usbInfo.readUsbName();
     print(name.productName);
     print(name.manufacturerName);
     print(name.serialNumber);
   }
 
   Future<void> writeData(UsbInfo info) async {
-    UsbHandle handle = await info.open();
+    UsbHandle handle = info.open();
     handle.writeData(
         endpoint: 0x01,
         buf: "hello world".codeUnits,
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
 
   ///监听usb口数据
   Future<void> listenString(UsbInfo info) async {
-    final handle = await info.open(); //打开操作端口
+    final handle = info.open(); //打开操作端口
     handle.setActiveConfiguration(config: 1); //设置设备配置(通常1)
     handle.claimInterface(iface: 0); //申明接口
     ///监听数据,endpoint:端点
@@ -72,22 +72,31 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('Native Packages'),
+            title: const Text('Dart usb plugin example'),
           ),
           body: ListView(
             children: [
               TextButton(
                   onPressed: () async {
-                    usbs = await getUsbInfos();
+                    usbs = getUsbInfos();
                     setState(() {});
                     for (var element in usbs) {
-                      print(element.vendorId);
-                      print(element.productId);
                       printName(element);
                     }
                   },
-                  child: Text("Get")),
-              Text('${jsonEncode(usbs)}')
+                  child: Text("Scan usb ...")),
+              ...usbs.map(
+                (e) {
+                  return ListTile(
+                      title: Text(
+                          'vendor id: ${e.vendorId} product name:  ${e.readUsbName().productName}'),
+                      trailing: ElevatedButton(
+                          onPressed: () {
+                            listenString(e);
+                          },
+                          child: const Text('listen data')));
+                },
+              )
             ],
           )),
     );

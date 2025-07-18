@@ -2,6 +2,10 @@
 
 dart library for obtaining USB interface information
 
+
+![./images/Snipaste_2025-07-18_10-32-05.png](./images/Snipaste_2025-07-18_10-32-05.png)
+
+
 ## Getting Started
 
 ```yaml
@@ -65,3 +69,14 @@ for (var element in usbList) {
 ```
 
 
+
+Macos 
+
+> You need to open USB permission on macOS
+
+![macos](./images/macos.png)
+
+
+> in m1 mac , you need exclude arm64 , and run in rosetta
+
+![macos02](./images/mac02.png)

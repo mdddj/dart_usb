@@ -1,5 +1,5 @@
 import 'package:dart_usb/frb_generated.dart';
 
-void initUsbLibrary() {
-  RustLib.init();
+Future<void> initUsbLibrary() async {
+  await RustLib.init();
 }
