@@ -1,6 +1,6 @@
 name: dart_usb
 description: "dart library for obtaining USB interface information"
-version: 0.1.1
+version: 0.2.0
 homepage: "https://github.com/mdddj/dart_usb"
 
 environment:

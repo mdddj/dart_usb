@@ -24,7 +24,7 @@ abstract class UsbHandle implements RustOpaqueInterface {
   void claimInterface({required int iface});
 
   ///读取数据
-  Stream<String> readInterrupt(
+  Stream<Uint8List> readInterrupt(
       {required int endpoint, required BigInt timeout});
 
   ///释放接口

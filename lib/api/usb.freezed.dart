@@ -20,7 +20,9 @@ mixin _$UsbName {
   String? get productName => throw _privateConstructorUsedError;
   String? get serialNumber => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsbName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsbNameCopyWith<UsbName> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -43,6 +45,8 @@ class _$UsbNameCopyWithImpl<$Res, $Val extends UsbName>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UsbName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class __$$UsbNameImplCopyWithImpl<$Res>
       _$UsbNameImpl _value, $Res Function(_$UsbNameImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UsbName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$UsbNameImpl implements _UsbName {
   int get hashCode =>
       Object.hash(runtimeType, manufacturerName, productName, serialNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsbName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsbNameImplCopyWith<_$UsbNameImpl> get copyWith =>
@@ -164,8 +172,11 @@ abstract class _UsbName implements UsbName {
   String? get productName;
   @override
   String? get serialNumber;
+
+  /// Create a copy of UsbName
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsbNameImplCopyWith<_$UsbNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -176,7 +187,9 @@ mixin _$UsbVersion {
   int get field1 => throw _privateConstructorUsedError;
   int get field2 => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsbVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsbVersionCopyWith<UsbVersion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -200,6 +213,8 @@ class _$UsbVersionCopyWithImpl<$Res, $Val extends UsbVersion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UsbVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,6 +258,8 @@ class __$$UsbVersionImplCopyWithImpl<$Res>
       _$UsbVersionImpl _value, $Res Function(_$UsbVersionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UsbVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -298,7 +315,9 @@ class _$UsbVersionImpl implements _UsbVersion {
   @override
   int get hashCode => Object.hash(runtimeType, field0, field1, field2);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsbVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsbVersionImplCopyWith<_$UsbVersionImpl> get copyWith =>
@@ -317,8 +336,11 @@ abstract class _UsbVersion implements UsbVersion {
   int get field1;
   @override
   int get field2;
+
+  /// Create a copy of UsbVersion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsbVersionImplCopyWith<_$UsbVersionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

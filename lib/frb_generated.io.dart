@@ -64,12 +64,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw);
-
-  @protected
   RustStreamSink<List<UsbInfo>>
       dco_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
           dynamic raw);
+
+  @protected
+  RustStreamSink<Uint8List> dco_decode_StreamSink_list_prim_u_8_strict_Sse(
+      dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -160,13 +161,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
-      SseDeserializer deserializer);
-
-  @protected
   RustStreamSink<List<UsbInfo>>
       sse_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
           SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Uint8List> sse_decode_StreamSink_list_prim_u_8_strict_Sse(
+      SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -264,13 +265,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           UsbInfo self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_String_Sse(
-      RustStreamSink<String> self, SseSerializer serializer);
-
-  @protected
   void
       sse_encode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
           RustStreamSink<List<UsbInfo>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_list_prim_u_8_strict_Sse(
+      RustStreamSink<Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);

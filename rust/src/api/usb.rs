@@ -100,7 +100,7 @@ pub struct UsbHandle {
 impl UsbHandle {
     ///读取数据
     #[frb(sync)]
-    pub fn read_interrupt(self, endpoint: u8, timeout: u64, listen: StreamSink<String>) {
+    pub fn read_interrupt(self, endpoint: u8, timeout: u64, listen: StreamSink<Vec<u8>>) {
         let mut buffer = [0u8; 64];
         let handle = Arc::new(Mutex::new(self.handle));
         FLUTTER_RUST_BRIDGE_HANDLER
@@ -115,8 +115,10 @@ impl UsbHandle {
                 );
                 match size {
                     Ok(size_len) => {
-                        let data = String::from_utf8_lossy(&buffer[..size_len]);
-                        let _ = listen.add(data.to_string());
+                        let buf = &buffer[..size_len];
+                        let _ = listen.add(buf.to_vec());
+                        // let data = String::from_utf8_lossy(buf);
+                        // let _ = listen.add(data.to_string());
                     }
                     Err(_) => todo!(),
                 };

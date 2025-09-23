@@ -83,7 +83,7 @@ abstract class RustLibApi extends BaseApi {
   void crateApiUsbUsbHandleClaimInterface(
       {required UsbHandle that, required int iface});
 
-  Stream<String> crateApiUsbUsbHandleReadInterrupt(
+  Stream<Uint8List> crateApiUsbUsbHandleReadInterrupt(
       {required UsbHandle that,
       required int endpoint,
       required BigInt timeout});
@@ -245,11 +245,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> crateApiUsbUsbHandleReadInterrupt(
+  Stream<Uint8List> crateApiUsbUsbHandleReadInterrupt(
       {required UsbHandle that,
       required int endpoint,
       required BigInt timeout}) {
-    final listen = RustStreamSink<String>();
+    final listen = RustStreamSink<Uint8List>();
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -257,7 +257,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_u_8(endpoint, serializer);
         sse_encode_u_64(timeout, serializer);
-        sse_encode_StreamSink_String_Sse(listen, serializer);
+        sse_encode_StreamSink_list_prim_u_8_strict_Sse(listen, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
       },
       codec: SseCodec(
@@ -1393,15 +1393,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw) {
+  RustStreamSink<List<UsbInfo>>
+      dco_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<List<UsbInfo>>
-      dco_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
-          dynamic raw) {
+  RustStreamSink<Uint8List> dco_decode_StreamSink_list_prim_u_8_strict_Sse(
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -1592,16 +1593,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
-      SseDeserializer deserializer) {
+  RustStreamSink<List<UsbInfo>>
+      sse_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<List<UsbInfo>>
-      sse_decode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
-          SseDeserializer deserializer) {
+  RustStreamSink<Uint8List> sse_decode_StreamSink_list_prim_u_8_strict_Sse(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
@@ -1822,19 +1823,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_String_Sse(
-      RustStreamSink<String> self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_String(
-        self.setupAndSerialize(
-            codec: SseCodec(
-          decodeSuccessData: sse_decode_String,
-          decodeErrorData: sse_decode_AnyhowException,
-        )),
-        serializer);
-  }
-
-  @protected
   void
       sse_encode_StreamSink_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo_Sse(
           RustStreamSink<List<UsbInfo>> self, SseSerializer serializer) {
@@ -1844,6 +1832,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             codec: SseCodec(
           decodeSuccessData:
               sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo,
+          decodeErrorData: sse_decode_AnyhowException,
+        )),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_list_prim_u_8_strict_Sse(
+      RustStreamSink<Uint8List> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+          decodeSuccessData: sse_decode_list_prim_u_8_strict,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
@@ -2008,7 +2009,7 @@ class UsbHandleImpl extends RustOpaque implements UsbHandle {
       .crateApiUsbUsbHandleClaimInterface(that: this, iface: iface);
 
   ///读取数据
-  Stream<String> readInterrupt(
+  Stream<Uint8List> readInterrupt(
           {required int endpoint, required BigInt timeout}) =>
       RustLib.instance.api.crateApiUsbUsbHandleReadInterrupt(
           that: this, endpoint: endpoint, timeout: timeout);
