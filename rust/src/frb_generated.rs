@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 37467833;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1027303645;
 
 // Section: executor
 
@@ -893,6 +893,52 @@ fn wire__crate__api__usb__UsbInfo_auto_accessor_get_serial_number_string_index_i
         },
     )
 }
+fn wire__crate__api__usb__UsbInfo_auto_accessor_get_speed_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "UsbInfo_auto_accessor_get_speed",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbInfo>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.speed.clone())?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__api__usb__UsbInfo_auto_accessor_get_sub_class_code_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -1694,6 +1740,57 @@ fn wire__crate__api__usb__UsbInfo_auto_accessor_set_serial_number_string_index_i
         },
     )
 }
+fn wire__crate__api__usb__UsbInfo_auto_accessor_set_speed_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "UsbInfo_auto_accessor_set_speed",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<UsbInfo>,
+            >>::sse_decode(&mut deserializer);
+            let api_speed = <crate::api::usb::UsbSpeed>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, true,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
+                        _ => unreachable!(),
+                    }
+                }
+                let mut api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok({
+                    {
+                        api_that_guard.speed = api_speed;
+                    };
+                })?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__api__usb__UsbInfo_auto_accessor_set_sub_class_code_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2064,6 +2161,13 @@ impl SseDecode for String {
     }
 }
 
+impl SseDecode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
 impl SseDecode for Vec<UsbInfo> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -2161,6 +2265,22 @@ impl SseDecode for crate::api::usb::UsbName {
     }
 }
 
+impl SseDecode for crate::api::usb::UsbSpeed {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::usb::UsbSpeed::Unknown,
+            1 => crate::api::usb::UsbSpeed::Low,
+            2 => crate::api::usb::UsbSpeed::Full,
+            3 => crate::api::usb::UsbSpeed::High,
+            4 => crate::api::usb::UsbSpeed::Super,
+            5 => crate::api::usb::UsbSpeed::SuperPlus,
+            _ => unreachable!("Invalid variant for UsbSpeed: {}", inner),
+        };
+    }
+}
+
 impl SseDecode for crate::api::usb::UsbVersion {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -2175,13 +2295,6 @@ impl SseDecode for usize {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u64::<NativeEndian>().unwrap() as _
-    }
-}
-
-impl SseDecode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
@@ -2287,105 +2400,111 @@ fn pde_ffi_dispatcher_sync_impl(
             rust_vec_len,
             data_len,
         ),
-        19 => wire__crate__api__usb__UsbInfo_auto_accessor_get_sub_class_code_impl(
+        19 => {
+            wire__crate__api__usb__UsbInfo_auto_accessor_get_speed_impl(ptr, rust_vec_len, data_len)
+        }
+        20 => wire__crate__api__usb__UsbInfo_auto_accessor_get_sub_class_code_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        20 => wire__crate__api__usb__UsbInfo_auto_accessor_get_usb_version_impl(
+        21 => wire__crate__api__usb__UsbInfo_auto_accessor_get_usb_version_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        21 => wire__crate__api__usb__UsbInfo_auto_accessor_get_vendor_id_impl(
+        22 => wire__crate__api__usb__UsbInfo_auto_accessor_get_vendor_id_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        22 => wire__crate__api__usb__UsbInfo_auto_accessor_set_address_impl(
+        23 => wire__crate__api__usb__UsbInfo_auto_accessor_set_address_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        23 => wire__crate__api__usb__UsbInfo_auto_accessor_set_bus_number_impl(
+        24 => wire__crate__api__usb__UsbInfo_auto_accessor_set_bus_number_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        24 => wire__crate__api__usb__UsbInfo_auto_accessor_set_class_code_impl(
+        25 => wire__crate__api__usb__UsbInfo_auto_accessor_set_class_code_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        25 => wire__crate__api__usb__UsbInfo_auto_accessor_set_descriptor_type_impl(
+        26 => wire__crate__api__usb__UsbInfo_auto_accessor_set_descriptor_type_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        26 => wire__crate__api__usb__UsbInfo_auto_accessor_set_device_version_impl(
+        27 => wire__crate__api__usb__UsbInfo_auto_accessor_set_device_version_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        27 => wire__crate__api__usb__UsbInfo_auto_accessor_set_length_impl(
+        28 => wire__crate__api__usb__UsbInfo_auto_accessor_set_length_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        28 => wire__crate__api__usb__UsbInfo_auto_accessor_set_manufacturer_string_index_impl(
+        29 => wire__crate__api__usb__UsbInfo_auto_accessor_set_manufacturer_string_index_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        29 => wire__crate__api__usb__UsbInfo_auto_accessor_set_max_packet_size_impl(
+        30 => wire__crate__api__usb__UsbInfo_auto_accessor_set_max_packet_size_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        30 => wire__crate__api__usb__UsbInfo_auto_accessor_set_num_configurations_impl(
+        31 => wire__crate__api__usb__UsbInfo_auto_accessor_set_num_configurations_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        31 => wire__crate__api__usb__UsbInfo_auto_accessor_set_product_id_impl(
+        32 => wire__crate__api__usb__UsbInfo_auto_accessor_set_product_id_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        32 => wire__crate__api__usb__UsbInfo_auto_accessor_set_product_string_index_impl(
+        33 => wire__crate__api__usb__UsbInfo_auto_accessor_set_product_string_index_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        33 => wire__crate__api__usb__UsbInfo_auto_accessor_set_protocol_code_impl(
+        34 => wire__crate__api__usb__UsbInfo_auto_accessor_set_protocol_code_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        34 => wire__crate__api__usb__UsbInfo_auto_accessor_set_serial_number_string_index_impl(
+        35 => wire__crate__api__usb__UsbInfo_auto_accessor_set_serial_number_string_index_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        35 => wire__crate__api__usb__UsbInfo_auto_accessor_set_sub_class_code_impl(
+        36 => {
+            wire__crate__api__usb__UsbInfo_auto_accessor_set_speed_impl(ptr, rust_vec_len, data_len)
+        }
+        37 => wire__crate__api__usb__UsbInfo_auto_accessor_set_sub_class_code_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        36 => wire__crate__api__usb__UsbInfo_auto_accessor_set_usb_version_impl(
+        38 => wire__crate__api__usb__UsbInfo_auto_accessor_set_usb_version_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        37 => wire__crate__api__usb__UsbInfo_auto_accessor_set_vendor_id_impl(
+        39 => wire__crate__api__usb__UsbInfo_auto_accessor_set_vendor_id_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        38 => wire__crate__api__usb__UsbInfo_open_impl(ptr, rust_vec_len, data_len),
-        39 => wire__crate__api__usb__UsbInfo_read_usb_name_impl(ptr, rust_vec_len, data_len),
-        40 => wire__crate__api__usb__get_usb_infos_impl(ptr, rust_vec_len, data_len),
-        41 => wire__crate__api__usb__listen_usb_event_handle_impl(ptr, rust_vec_len, data_len),
+        40 => wire__crate__api__usb__UsbInfo_open_impl(ptr, rust_vec_len, data_len),
+        41 => wire__crate__api__usb__UsbInfo_read_usb_name_impl(ptr, rust_vec_len, data_len),
+        42 => wire__crate__api__usb__get_usb_infos_impl(ptr, rust_vec_len, data_len),
+        43 => wire__crate__api__usb__listen_usb_event_handle_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -2436,6 +2555,26 @@ impl flutter_rust_bridge::IntoDart for crate::api::usb::UsbName {
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::usb::UsbName {}
 impl flutter_rust_bridge::IntoIntoDart<crate::api::usb::UsbName> for crate::api::usb::UsbName {
     fn into_into_dart(self) -> crate::api::usb::UsbName {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::usb::UsbSpeed {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::Unknown => 0.into_dart(),
+            Self::Low => 1.into_dart(),
+            Self::Full => 2.into_dart(),
+            Self::High => 3.into_dart(),
+            Self::Super => 4.into_dart(),
+            Self::SuperPlus => 5.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::usb::UsbSpeed {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::usb::UsbSpeed> for crate::api::usb::UsbSpeed {
+    fn into_into_dart(self) -> crate::api::usb::UsbSpeed {
         self
     }
 }
@@ -2518,6 +2657,13 @@ impl SseEncode for String {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
+    }
+}
+
+impl SseEncode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
@@ -2606,6 +2752,26 @@ impl SseEncode for crate::api::usb::UsbName {
     }
 }
 
+impl SseEncode for crate::api::usb::UsbSpeed {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::api::usb::UsbSpeed::Unknown => 0,
+                crate::api::usb::UsbSpeed::Low => 1,
+                crate::api::usb::UsbSpeed::Full => 2,
+                crate::api::usb::UsbSpeed::High => 3,
+                crate::api::usb::UsbSpeed::Super => 4,
+                crate::api::usb::UsbSpeed::SuperPlus => 5,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for crate::api::usb::UsbVersion {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -2622,13 +2788,6 @@ impl SseEncode for usize {
             .cursor
             .write_u64::<NativeEndian>(self as _)
             .unwrap();
-    }
-}
-
-impl SseEncode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 

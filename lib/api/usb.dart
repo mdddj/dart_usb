@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'usb.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `clone`, `cmp`, `eq`, `fmt`, `hash`, `into`, `into`, `partial_cmp`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `cmp`, `eq`, `eq`, `fmt`, `fmt`, `hash`, `hash`, `into`, `into`, `into`, `partial_cmp`
 
 /// get all usb infos
 List<UsbInfo> getUsbInfos() => RustLib.instance.api.crateApiUsbGetUsbInfos();
@@ -66,6 +66,8 @@ abstract class UsbInfo implements RustOpaqueInterface {
 
   int? get serialNumberStringIndex;
 
+  UsbSpeed get speed;
+
   int get subClassCode;
 
   UsbVersion get usbVersion;
@@ -98,6 +100,8 @@ abstract class UsbInfo implements RustOpaqueInterface {
 
   set serialNumberStringIndex(int? serialNumberStringIndex);
 
+  set speed(UsbSpeed speed);
+
   set subClassCode(int subClassCode);
 
   set usbVersion(UsbVersion usbVersion);
@@ -117,6 +121,30 @@ sealed class UsbName with _$UsbName {
     String? productName,
     String? serialNumber,
   }) = _UsbName;
+}
+
+/// USB device speeds. Indicates the speed at which a device is operating.
+/// - [libusb_supported_speed](http://libusb.sourceforge.net/api-1.0/group__libusb__dev.html#ga1454797ecc0de4d084c1619c420014f6)
+/// - [USB release versions](https://en.wikipedia.org/wiki/USB#Release_versions)
+enum UsbSpeed {
+  /// The operating system doesn't know the device speed.
+  unknown,
+
+  /// The device is operating at low speed (1.5 Mbps).
+  low,
+
+  /// The device is operating at full speed (12 Mbps).
+  full,
+
+  /// The device is operating at high speed (480 Mbps).
+  high,
+
+  /// The device is operating at super speed (5 Gbps).
+  super_,
+
+  /// The device is operating at super speed plus (10 Gbps).
+  superPlus,
+  ;
 }
 
 @freezed

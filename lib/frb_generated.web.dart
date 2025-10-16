@@ -84,6 +84,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_box_autoadd_u_8(dynamic raw);
 
   @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
   List<UsbInfo>
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
           dynamic raw);
@@ -117,6 +120,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   UsbName dco_decode_usb_name(dynamic raw);
+
+  @protected
+  UsbSpeed dco_decode_usb_speed(dynamic raw);
 
   @protected
   UsbVersion dco_decode_usb_version(dynamic raw);
@@ -181,6 +187,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int sse_decode_box_autoadd_u_8(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
   List<UsbInfo>
       sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
           SseDeserializer deserializer);
@@ -216,13 +225,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   UsbName sse_decode_usb_name(SseDeserializer deserializer);
 
   @protected
+  UsbSpeed sse_decode_usb_speed(SseDeserializer deserializer);
+
+  @protected
   UsbVersion sse_decode_usb_version(SseDeserializer deserializer);
 
   @protected
   BigInt sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
@@ -285,6 +294,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_box_autoadd_u_8(int self, SseSerializer serializer);
 
   @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
   void
       sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerUsbInfo(
           List<UsbInfo> self, SseSerializer serializer);
@@ -321,13 +333,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_usb_name(UsbName self, SseSerializer serializer);
 
   @protected
+  void sse_encode_usb_speed(UsbSpeed self, SseSerializer serializer);
+
+  @protected
   void sse_encode_usb_version(UsbVersion self, SseSerializer serializer);
 
   @protected
   void sse_encode_usize(BigInt self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);

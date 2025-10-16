@@ -5,7 +5,7 @@ use std::{
 };
 
 use flutter_rust_bridge::frb;
-use rusb::{Device, DeviceHandle, GlobalContext, Version};
+use rusb::{Device, DeviceHandle, GlobalContext, Speed, Version};
 
 use crate::frb_generated::{StreamSink, FLUTTER_RUST_BRIDGE_HANDLER};
 
@@ -31,7 +31,46 @@ pub struct UsbInfo {
     pub device_version: UsbVersion,
     pub descriptor_type: u8,
     pub length: u8,
+    pub speed: UsbSpeed,
     device_origin: Device<GlobalContext>,
+}
+
+/// USB device speeds. Indicates the speed at which a device is operating.
+/// - [libusb_supported_speed](http://libusb.sourceforge.net/api-1.0/group__libusb__dev.html#ga1454797ecc0de4d084c1619c420014f6)
+/// - [USB release versions](https://en.wikipedia.org/wiki/USB#Release_versions)
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
+pub enum UsbSpeed {
+    /// The operating system doesn't know the device speed.
+    Unknown,
+
+    /// The device is operating at low speed (1.5 Mbps).
+    Low,
+
+    /// The device is operating at full speed (12 Mbps).
+    Full,
+
+    /// The device is operating at high speed (480 Mbps).
+    High,
+
+    /// The device is operating at super speed (5 Gbps).
+    Super,
+
+    /// The device is operating at super speed plus (10 Gbps).
+    SuperPlus,
+}
+
+impl Into<UsbSpeed> for Speed {
+    fn into(self) -> UsbSpeed {
+        match self {
+            Speed::Unknown => UsbSpeed::Unknown,
+            Speed::Low => UsbSpeed::Low,
+            Speed::Full => UsbSpeed::Full,
+            Speed::High => UsbSpeed::High,
+            Speed::Super => UsbSpeed::Super,
+            Speed::SuperPlus => UsbSpeed::SuperPlus,
+            _ => UsbSpeed::Unknown,
+        }
+    }
 }
 
 /// get all usb infos
@@ -159,7 +198,9 @@ impl Into<UsbInfo> for Device<GlobalContext> {
     fn into(self) -> UsbInfo {
         let address = self.address();
         let desc = self.device_descriptor().unwrap();
+        let speed = self.speed().into();
         return UsbInfo {
+            speed,
             bus_number: self.bus_number(),
             address: address,
             vendor_id: desc.vendor_id(),

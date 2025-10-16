@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dart_usb/api/usb.dart';
 import 'package:dart_usb/dart_usb.dart';
 import 'package:flutter/material.dart';
@@ -88,13 +86,15 @@ class _MyAppState extends State<MyApp> {
               ...usbs.map(
                 (e) {
                   return ListTile(
-                      title: Text(
-                          'vendor id: ${e.vendorId} product name:  ${e.readUsbName().productName}'),
-                      trailing: ElevatedButton(
-                          onPressed: () {
-                            listenDataStream(e);
-                          },
-                          child: const Text('listen data')));
+                    title: Text(
+                        'vendor id: ${e.vendorId} product name:  ${e.readUsbName().productName}'),
+                    trailing: ElevatedButton(
+                        onPressed: () {
+                          listenDataStream(e);
+                        },
+                        child: const Text('listen data')),
+                    subtitle: Text('speed: ${e.speed}'),
+                  );
                 },
               )
             ],
